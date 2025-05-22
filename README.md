@@ -15,4 +15,5 @@ docker run --rm -v $(pwd):/protos hungthai1401/roadrunner-protoc \
     /protos/*.proto
 ```
 
-Inspired by [keepsuit/docker-protoc](https://github.com/keepsuit/docker-protoc)
+### Thanks
+- [keepsuit/docker-protoc](https://github.com/keepsuit/docker-protoc)
