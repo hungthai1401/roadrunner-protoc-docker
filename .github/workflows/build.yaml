@@ -40,9 +40,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/roadrunner-protoc:latest
-
-      - name: Tag image with release version
-        run: |
-          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/roadrunner-protoc:latest ${{ secrets.DOCKERHUB_USERNAME }}/roadrunner-protoc:${{ github.event.release.tag_name }}
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/roadrunner-protoc:${{ github.event.release.tag_name }}
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/roadrunner-protoc:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/roadrunner-protoc:${{ github.event.release.tag_name }}
