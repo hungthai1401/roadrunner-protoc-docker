@@ -39,6 +39,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/roadrunner-protoc:latest
 
       - name: Tag image with release version
