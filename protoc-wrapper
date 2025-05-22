@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+includes=()
+outs=()
+args=()
+
+for arg in $@; do
+    case $arg in
+        --*_out=*)
+            outs+=(${arg})
+            shift
+            ;;
+        -I*|--proto_path=*)
+            includes+=(${arg})
+            shift
+            ;;
+        *)
+            args+=(${arg})
+            ;;
+    esac
+done
+
+if [ ${#includes[@]} -eq 0 ]; then
+    # replicate protoc behavior
+    includes+=("-I.")
+fi
+
+protoc_cmd="protoc ${includes[@]} ${outs[@]} ${args[@]}"
+
+exec ${protoc_cmd}
